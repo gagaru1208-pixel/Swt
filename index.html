@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Ответ</title>
+    <style>
+        /* Основное оформление страницы */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+        }
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            overflow-x: auto;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>SWT CS2 TOURNAMENTS</title>
+<meta name="theme-color" content="#3a0608" />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-outer-1:#0b0404;
+  --bg-outer-2:#3a0608;
+  --main-a:#5a0710;
+  --main-b:#8b0f1a;
+  --accent-a:#b71b26;
+  --accent-b:#d9484a;
+  --soft:#ffd6d6;
+  --muted-rgba: rgba(139,15,26,0.06);
+  --card-shadow: rgba(34,5,7,0.6);
+  --radius:14px;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  min-height:100vh;
+  font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Montserrat;
+  background:
+    radial-gradient(800px 400px at 8% 8%, rgba(139,15,26,0.12), transparent 8%),
+    linear-gradient(180deg,var(--bg-outer-1) 0%, var(--bg-outer-2) 55%, #220204 100%);
+  color:var(--soft);
+  padding:20px;
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* Header */
+header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  position:relative;
+}
+.left{display:flex;align-items:center;gap:14px}
+.oval{
+  padding:10px 18px;border-radius:999px;
+  background:linear-gradient(90deg, rgba(139,15,26,0.20), rgba(90,7,16,0.12));
+  border:1px solid var(--muted-rgba);
+  font-weight:800;font-family:Montserrat;
+  color:var(--soft);font-size:14px;white-space:nowrap;
+  transition:transform .28s ease, box-shadow .28s;
+}
+.oval:hover{transform:translateY(-2px)}
+
+/* Top nav with moving indicator */
+nav.topnav{
+  display:flex;gap:10px;align-items:center;position:relative;padding-left:6px;padding-right:6px;
+}
+.nav-inner{display:flex;gap:10px;align-items:center;position:relative}
+.btn{
+  position:relative;
+  padding:9px 14px;border-radius:10px;
+  background:linear-gradient(180deg, rgba(139,15,26,0.02), rgba(34,5,7,0.02));
+  border:1px solid var(--muted-rgba);
+  color:var(--soft);
+  font-weight:600;cursor:pointer;min-width:140px;text-align:center;
+  transition:transform .18s ease, background .22s, box-shadow .22s, color .15s;
+  overflow:visible;
+}
+.btn:hover{ transform:translateY(-4px); box-shadow:0 14px 36px var(--card-shadow); }
+.btn.active{ background:linear-gradient(90deg,var(--accent-a),var(--accent-b)); box-shadow:0 18px 46px rgba(139,15,26,0.18); }
+
+/* indicator bar below nav (animated) */
+.nav-indicator{
+  position:absolute;bottom:-10px;height:6px;border-radius:6px;
+  background:linear-gradient(90deg,var(--accent-a),var(--accent-b));
+  box-shadow:0 8px 26px rgba(139,15,26,0.18);
+  transition: transform .36s cubic-bezier(.2,.9,.3,1), width .36s cubic-bezier(.2,.9,.3,1), opacity .28s;
+  will-change:transform,width;
+  opacity:0;
+}
+
+/* Toggle (knob with three lines) */
+.controls-right{display:flex;align-items:center}
+.toggle{
+  width:56px;height:34px;padding:5px;border-radius:999px;
+  background:linear-gradient(180deg, rgba(139,15,26,0.02), rgba(34,5,7,0.04));
+  border:1px solid var(--muted-rgba);
+  display:flex;align-items:center;justify-content:flex-start;cursor:pointer;
+  position:relative;transition:background .22s, transform .18s;
+  box-shadow: 0 8px 22px rgba(34,5,7,0.45);
+  isolation:isolate;
+}
+.toggle.anim{ animation: togglePulse .36s ease; }
+@keyframes togglePulse{
+  0%{ transform: scale(1) rotate(0deg) }
+  40%{ transform: scale(1.06) rotate(-4deg) }
+  100%{ transform: scale(1) rotate(0deg) }
+}
+.knob{
+  width:28px;height:28px;border-radius:8px;margin-left:2px;
+  background:linear-gradient(180deg, var(--main-a), var(--main-b));
+  border:1px solid var(--muted-rgba);
+  display:flex;align-items:center;justify-content:center;
+  transition:transform .28s cubic-bezier(.2,.9,.3,1), background .28s, box-shadow .2s;
+  box-shadow: 0 6px 16px rgba(34,5,7,0.45);
+  position:relative;
+}
+.hamburger{ width:16px;height:12px;display:flex;flex-direction:column;justify-content:space-between; }
+.hamburger span{ display:block;height:2px;border-radius:2px;background:var(--soft);transition:transform .26s,opacity .18s,width .18s;transform-origin:center; }
+
+/* open state: move knob and morph lines */
+header.open .toggle{ background:linear-gradient(90deg,var(--accent-a),var(--accent-b)); }
+header.open .knob{ transform: translateX(22px); background:linear-gradient(180deg,var(--accent-a),var(--accent-b)); box-shadow:0 8px 20px rgba(139,15,26,0.28) }
+header.open .hamburger span:nth-child(1){ transform: translateY(5px) rotate(45deg); width:16px }
+header.open .hamburger span:nth-child(2){ opacity:0; transform:scaleX(.2) }
+header.open .hamburger span:nth-child(3){ transform: translateY(-5px) rotate(-45deg); width:16px }
+
+/* Drawer */
+.drawer{
+  position:fixed;top:12px;right:12px;width:320px;max-width:92vw;
+  background:linear-gradient(180deg, var(--main-a), var(--main-b));
+  border-radius:12px;padding:12px;border:1px solid var(--muted-rgba);
+  box-shadow:0 28px 100px var(--card-shadow);
+  transform:translateY(-8px) translateX(20px) scale(.98);opacity:0;pointer-events:none;
+  transition:transform .36s cubic-bezier(.2,.9,.3,1), opacity .28s;
+  z-index:50;
+}
+header.open ~ .drawer{ transform: translateY(0) translateX(0) scale(1); opacity:1; pointer-events:auto; }
+.drawer h4{ margin:0 0 8px 0; color:var(--soft); font-family:Montserrat; font-size:14px; }
+.drawer .drawer-btn{
+  display:flex;align-items:center;gap:10px;padding:10px;border-radius:8px;
+  background:linear-gradient(180deg, rgba(34,5,7,0.02), rgba(139,15,26,0.02));
+  border:1px solid var(--muted-rgba); cursor:pointer; color:var(--soft); font-weight:600; margin-bottom:8px;
+  transition:transform .16s, background .16s;
+}
+.drawer .drawer-btn:hover{ transform: translateX(-6px); background:linear-gradient(90deg,var(--accent-a),var(--accent-b)); }
+
+/* Main hero / content */
+main{
+  flex:1; display:flex; align-items:center; justify-content:center; overflow:hidden; padding:18px;
+}
+.hero{
+  width:100%; max-width:1100px;
+  background: linear-gradient(135deg, rgba(139,15,26,0.20), rgba(216,72,74,0.06));
+  border-radius:12px; padding:48px 36px; text-align:center;
+  border:1px solid var(--muted-rgba);
+  box-shadow:0 30px 90px var(--card-shadow);
+  transition:transform .32s;
+  overflow:visible;
+}
+.hero:hover{ transform: translateY(-6px); }
+.h1{ font-family:Montserrat; font-size:34px; color:var(--soft); margin:0 0 12px 0; letter-spacing:1px; }
+.sub{ margin:0; color:#f5cfcf; font-size:15px; }
+
+/* Sections area */
+.sections{ margin-top:22px; display:grid; gap:14px; position:relative; min-height:120px; }
+
+/* Generic section cards */
+.section{
+  background: linear-gradient(180deg, rgba(139,15,26,0.10), rgba(216,72,74,0.03));
+  padding:16px; border-radius:10px; border:1px solid var(--muted-rgba);
+  opacity:0; transform:translateY(14px); transition:opacity .34s, transform .34s; pointer-events:none;
+}
+.section.active{ opacity:1; transform:translateY(0); pointer-events:auto; }
+
+/* Tournament listing styles (specialized) */
+.tourney-list{ display:flex; flex-direction:column; gap:12px; margin-top:8px; }
+.tourney{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:12px;border-radius:10px;
+  background:linear-gradient(90deg, rgba(216,72,74,0.06), rgba(139,15,26,0.06));
+  border:1px solid rgba(216,72,74,0.06);
+  box-shadow: 0 8px 28px rgba(34,5,7,0.36);
+  transition:transform .22s, box-shadow .22s;
+}
+.tourney:hover{ transform:translateY(-6px); box-shadow:0 18px 46px rgba(34,5,7,0.5); }
+.tourney .info{ display:flex;flex-direction:column; align-items:flex-start; gap:6px; }
+.title{ font-weight:700; font-family:Montserrat; color:var(--soft); font-size:16px; }
+.meta{ color:#f2c9c9; font-size:13px; opacity:0.95; }
+
+/* Winner badge */
+.badge{
+  background: linear-gradient(180deg, var(--accent-a), var(--accent-b));
+  color:var(--soft); padding:8px 12px; border-radius:10px; font-weight:700; font-family:Montserrat;
+  box-shadow: 0 10px 30px rgba(139,15,26,0.16);
+  white-space:nowrap;
+}
+
+/* small screens */
+@media (max-width:900px){
+  nav.topnav{ display:none; }
+  .oval{ font-size:13px; }
+  .btn{ min-width:120px; }
+  .tourney{ flex-direction:column; align-items:flex-start; }
+  .badge{ align-self:stretch; text-align:center; margin-top:8px; }
+}
+
+/* reduce motion */
+@media (prefers-reduced-motion:reduce){
+  *{ transition:none!important; animation:none!important; }
+}
+</style>
+</head>
+<body>
+<header id="hdr">
+  <div class="left">
+    <div class="oval" role="banner">SWT CS2 TOURNAMENTS</div>
+
+    <nav class="topnav" aria-label="Главное меню">
+      <div class="nav-inner" id="navInner">
+        <button class="btn" data-section="upcoming">Предстоящие игры</button>
+        <button class="btn" data-section="teams">Команды</button>
+        <button class="btn" data-section="ranking">Рейтинг</button>
+        <button class="btn" data-section="history">История игр</button>
+        <button class="btn" data-section="tournaments">Турниры</button>
+      </div>
+      <div class="nav-indicator" id="navIndicator"></div>
+    </nav>
+  </div>
+
+  <div class="controls-right">
+    <div id="toggle" class="toggle" role="switch" aria-checked="false" aria-label="Открыть панель">
+      <div class="knob" aria-hidden="true">
+        <div class="hamburger" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="drawer" role="dialog" aria-label="Панель навигации">
+  <h4>Навигация</h4>
+  <button class="drawer-btn" data-section="upcoming">Предстоящие игры</button>
+  <button class="drawer-btn" data-section="teams">Команды</button>
+  <button class="drawer-btn" data-section="ranking">Рейтинг</button>
+  <button class="drawer-btn" data-section="history">История игр</button>
+  <button class="drawer-btn" data-section="tournaments">Турниры</button>
+</div>
+
+<main>
+  <section class="hero" aria-labelledby="heroTitle">
+    <h1 id="heroTitle" class="h1">SWT TOURNAMENT — киберспортивная платформа</h1>
+    <p class="sub">Все турниры, команды и результаты в едином стиле — интенсивно, бордово, характерно.</p>
+
+    <div class="sections" id="sections">
+      <div id="upcoming" class="section active" role="region" aria-label="Предстоящие игры">
+        <strong style="font-family:Montserrat;color:var(--soft)">Предстоящие игры</strong>
+        <p style="margin:.4rem 0 0 0;color:#efcfcf">Следите за расписанием и трансляциями в реальном времени.</p>
+      </div>
+
+      <div id="teams" class="section" role="region" aria-label="Команды">
+        <strong style="font-family:Montserrat;color:var(--soft)">Команды</strong>
+        <p style="margin:.4rem 0 0 0;color:#efcfcf">Профили, составы и статистика.</p>
+      </div>
+
+      <div id="ranking" class="section" role="region" aria-label="Рейтинг">
+        <strong style="font-family:Montserrat;color:var(--soft)">Рейтинг</strong>
+        <p style="margin:.4rem 0 0 0;color:#efcfcf">Текущая таблица лидеров и очков.</p>
+      </div>
+
+      <div id="history" class="section" role="region" aria-label="История игр">
+        <strong style="font-family:Montserrat;color:var(--soft)">История игр</strong>
+        <p style="margin:.4rem 0 0 0;color:#efcfcf">Архив матчей и ключевые моменты.</p>
+      </div>
+
+      <div id="tournaments" class="section" role="region" aria-label="Турниры">
+        <strong style="font-family:Montserrat;color:var(--soft);display:block">Турниры</strong>
+        <div class="tourney-list" aria-live="polite">
+          <div class="tourney" tabindex="0">
+            <div class="info">
+              <div class="title">SWT||Tactical war</div>
+              <div class="meta">Формат: 5v5 • Сервер: EU • Дата: архив</div>
+            </div>
+            <div class="badge">Победитель: Dfsquad</div>
+          </div>
+
+          <div class="tourney" tabindex="0">
+            <div class="info">
+              <div class="title">SWT||RAZE CUP</div>
+              <div class="meta">Формат: 5v5 • Сервер: EU • Дата: архив</div>
+            </div>
+            <div class="badge">Победитель: Dfsquad junior</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<script>
+(function(){
+  const hdr = document.getElementById('hdr');
+  const toggle = document.getElementById('toggle');
+  const navInner = document.getElementById('navInner');
+  const navIndicator = document.getElementById('navIndicator');
+  const btns = Array.from(navInner.querySelectorAll('.btn'));
+  const sections = Array.from(document.querySelectorAll('.section'));
+  const drawerBtns = Array.from(document.querySelectorAll('.drawer-btn'));
+
+  // Indicator positioning helper
+  function positionIndicator(targetBtn, instant=false){
+    if(!targetBtn) { navIndicator.style.opacity = '0'; return; }
+    const rect = targetBtn.getBoundingClientRect();
+    const parentRect = navInner.getBoundingClientRect();
+    const left = rect.left - parentRect.left;
+    const width = rect.width;
+    navIndicator.style.opacity = '1';
+    if(instant){
+      navIndicator.style.transition = 'none';
+      navIndicator.style.transform = `translateX(${left}px)`;
+      navIndicator.style.width = `${width}px`;
+      requestAnimationFrame(()=> navIndicator.style.transition = '');
+    } else {
+      navIndicator.style.transform = `translateX(${left}px)`;
+      navIndicator.style.width = `${width}px`;
+    }
+  }
+
+  // Content transition animation using WAAPI
+  let currentId = 'upcoming';
+  function switchSection(id, originBtn){
+    if(id === currentId) return;
+    const prev = document.getElementById(currentId);
+    const next = document.getElementById(id);
+    if(!prev || !next) return;
+
+    // animate out previous
+    prev.animate([
+      { opacity: 1, transform: 'translateY(0)' },
+      { opacity: 0, transform: 'translateY(12px)' }
+    ], { duration: 320, easing: 'cubic-bezier(.2,.9,.3,1)' }).onfinish = () => {
+      prev.classList.remove('active');
+      prev.style.pointerEvents = 'none';
+    };
+
+    // prepare next
+    next.classList.add('active');
+    next.style.pointerEvents = 'auto';
+    next.animate([
+      { opacity: 0, transform: 'translateY(12px)' },
+      { opacity: 1, transform: 'translateY(0)' }
+    ], { duration: 360, easing: 'cubic-bezier(.2,.9,.3,1)' });
+
+    // nav active classes
+    btns.forEach(b => b.classList.toggle('active', b.dataset.section === id));
+
+    // move indicator
+    const btnForIndicator = btns.find(b => b.dataset.section === id);
+    positionIndicator(btnForIndicator);
+
+    // small origin pulse
+    if(originBtn){
+      originBtn.animate([{ transform: 'scale(1)' },{ transform: 'scale(.96)' },{ transform: 'scale(1)' }], { duration: 220 });
+    }
+
+    currentId = id;
+    // close drawer if open
+    hdr.classList.remove('open');
+    toggle.setAttribute('aria-checked','false');
+  }
+
+  // initial indicator placement on load
+  function initIndicator(){
+    const activeBtn = btns.find(b => b.dataset.section === currentId) || btns[0];
+    btns.forEach(b => b.classList.toggle('active', b === activeBtn));
+    positionIndicator(activeBtn, true);
+  }
+  window.addEventListener('load', initIndicator);
+  window.addEventListener('resize', ()=> positionIndicator(btns.find(b => b.dataset.section === currentId)));
+
+  // click delegation for nav buttons
+  navInner.addEventListener('click', (e)=>{
+    const btn = e.target.closest('.btn');
+    if(!btn) return;
+    const id = btn.dataset.section;
+    switchSection(id, btn);
+  });
+
+  // drawer buttons
+  drawerBtns.forEach(b => b.addEventListener('click', (e)=>{
+    const id = b.dataset.section;
+    const matchingTop = btns.find(x => x.dataset.section === id);
+    switchSection(id, matchingTop || b);
+  }));
+
+  // toggle button: animation and open/close drawer
+  toggle.addEventListener('click', ()=>{
+    // add pulse animation class
+    toggle.classList.add('anim');
+    setTimeout(()=> toggle.classList.remove('anim'), 380);
+
+    const isOpen = hdr.classList.toggle('open');
+    toggle.setAttribute('aria-checked', String(isOpen));
+    if(isOpen) {
+      // position indicator hidden while drawer open
+      navIndicator.style.opacity = '0';
+      document.querySelector('.drawer .drawer-btn')?.focus();
+    } else {
+      positionIndicator(btns.find(b => b.dataset.section === currentId) || btns[0]);
+    }
+  });
+
+  // keyboard accessibility
+  document.addEventListener('keydown', (e)=>{
+    if(e.key === 'Escape' && hdr.classList.contains('open')){
+      hdr.classList.remove('open');
+      toggle.setAttribute('aria-checked','false');
+      positionIndicator(btns.find(b => b.dataset.section === currentId));
+    }
+    if((e.key === 'Enter' || e.key === ' ') && document.activeElement?.matches('.btn, .drawer-btn')){
+      document.activeElement.click();
+      e.preventDefault();
+    }
+  });
+
+  // close drawer on outside click
+  document.addEventListener('click', (e)=>{
+    if(!hdr.classList.contains('open')) return;
+    const path = e.composedPath ? e.composedPath() : (e.path || []);
+    const drawerEl = document.querySelector('.drawer');
+    const inside = path.includes(drawerEl) || path.includes(toggle) || path.includes(hdr);
+    if(!inside){
+      hdr.classList.remove('open');
+      toggle.setAttribute('aria-checked','false');
+      positionIndicator(btns.find(b => b.dataset.section === currentId));
+    }
+  });
+
+  // initial activation
+  switchSection(currentId);
+})();
+</script>
+</body>
+</html>
+    </div>
+</body>
+          </html>
+  
