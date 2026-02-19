@@ -1,0 +1,237 @@
+{
+	"api": {
+		"listen": "[::1]:10085",
+		"services": [
+			"HandlerService",
+			"StatsService"
+		],
+		"tag": "api"
+	},
+	"dns": {
+		"hosts": {
+			"domain:googleapis.cn": "googleapis.com",
+			"cloudflare-dns.com": "1.1.1.1",
+			"dns.google": "8.8.8.8"
+		},
+		"queryStrategy": "UseIP",
+		"servers": [
+			"1.1.1.1",
+			{
+				"address": "1.1.1.1",
+				"domains": [
+					"geosite:youtube",
+					"geosite:category-ban-ru"
+				],
+				"port": 53
+			},
+			{
+				"address": "77.88.8.8",
+				"domains": [
+					"geosite:private",
+					"geosite:category-ru",
+					"geosite:apple",
+					"geosite:twitch"
+				],
+				"port": 53
+			}
+		]
+	},
+	"inbounds": [
+		{
+			"listen": "127.0.0.1",
+			"port": 10808,
+			"protocol": "socks",
+			"settings": {
+				"auth": "noauth",
+				"udp": true,
+				"userLevel": 8
+			},
+			"sniffing": {
+				"destOverride": [
+					"http",
+					"tls",
+					"quic"
+				],
+				"enabled": true
+			},
+			"tag": "socks"
+		},
+		{
+			"listen": "127.0.0.1",
+			"port": 10809,
+			"protocol": "http",
+			"settings": {
+				"userLevel": 8
+			},
+			"sniffing": {
+				"destOverride": [
+					"http",
+					"tls",
+					"quic"
+				],
+				"enabled": true
+			},
+			"tag": "http"
+		}
+	],
+	"log": {
+		"access": "/storage/emulated/0/Android/data/com.happproxy/files/assets/logs/access/access_log.txt",
+		"dnsLog": true,
+		"error": "/storage/emulated/0/Android/data/com.happproxy/files/assets/logs/error/1771508159691_error_log.txt",
+		"loglevel": "debug"
+	},
+	"outbounds": [
+		{
+			"mux": {
+				"concurrency": -1,
+				"enabled": false,
+				"xudpConcurrency": 8,
+				"xudpProxyUDP443": ""
+			},
+			"protocol": "vless",
+			"settings": {
+				"vnext": [
+					{
+						"address": "89.125.48.112",
+						"port": 443,
+						"users": [
+							{
+								"encryption": "none",
+								"flow": "xtls-rprx-vision",
+								"id": "fd325093-cdb5-4a73-980e-af2ec0444310",
+								"level": 8,
+								"security": "auto"
+							}
+						]
+					}
+				]
+			},
+			"streamSettings": {
+				"network": "tcp",
+				"realitySettings": {
+					"allowInsecure": false,
+					"fingerprint": "chrome",
+					"publicKey": "2s4DLPlhc3evv3LN-qV-nXdjQtJ7jQ35i--PE8JeeG4",
+					"serverName": "retn.net",
+					"shortId": "",
+					"show": false
+				},
+				"security": "reality",
+				"sockopt": {
+					"dialerProxy": "fragment"
+				},
+				"tcpSettings": {
+					"header": {
+						"type": "none"
+					}
+				}
+			},
+			"tag": "proxy"
+		},
+		{
+			"protocol": "freedom",
+			"tag": "direct"
+		},
+		{
+			"protocol": "blackhole",
+			"tag": "block"
+		},
+		{
+			"protocol": "freedom",
+			"settings": {
+				"fragment": {
+					"interval": "10-20",
+					"length": "50-100",
+					"maxSplit": "100-200",
+					"packets": "1-3"
+				},
+				"noises": [
+					{
+						"applyTo": "ip",
+						"delay": "10-16",
+						"packet": "10-20",
+						"type": "rand"
+					}
+				]
+			},
+			"streamSettings": {
+				"network": "tcp",
+				"security": "",
+				"sockopt": {
+					"TcpNoDelay": true,
+					"mark": 255
+				}
+			},
+			"tag": "fragment"
+		}
+	],
+	"policy": {
+		"levels": {
+			"8": {
+				"connIdle": 300,
+				"downlinkOnly": 1,
+				"handshake": 4,
+				"uplinkOnly": 1
+			}
+		},
+		"system": {
+			"statsOutboundUplink": true,
+			"statsOutboundDownlink": true
+		}
+	},
+	"remarks": "🇳🇱6|LTE обход белых списков",
+	"routing": {
+		"domainStrategy": "IPIfNonMatch",
+		"rules": [
+			{
+				"ip": [
+					"1.1.1.1"
+				],
+				"outboundTag": "proxy",
+				"port": "53"
+			},
+			{
+				"ip": [
+					"77.88.8.8"
+				],
+				"outboundTag": "direct",
+				"port": "53"
+			},
+			{
+				"domain": [
+					"geosite:private",
+					"geosite:category-ru",
+					"geosite:apple",
+					"geosite:twitch"
+				],
+				"outboundTag": "direct"
+			},
+			{
+				"ip": [
+					"geoip:ru",
+					"geoip:private"
+				],
+				"outboundTag": "direct"
+			},
+			{
+				"domain": [
+					"geosite:youtube",
+					"geosite:category-ban-ru"
+				],
+				"outboundTag": "proxy"
+			},
+			{
+				"ip": [
+					"10.0.0.0/8",
+					"172.16.0.0/12",
+					"192.168.0.0/16",
+					"169.254.0.0/16",
+					"224.0.0.0/4",
+					"255.255.255.255"
+				],
+				"outboundTag": "direct"
+			}
+		]
+	},
+	"stats": {}
+}
